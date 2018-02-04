@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * @param {Phaser.Game} game
+ * @param {boolean} isGameOver
+ */
 export function calculate(game, isGameOver) {
   let score = game.global.collectedBones;
   game.global.score += score;

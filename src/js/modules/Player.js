@@ -1,5 +1,8 @@
 'use strict';
 
+/**
+ * @param {Phaser.Game} game
+ */
 export function create(game) {
   // let player = game.add.sprite(32, game.world.height - 150, 'character');
   let player = game.add.sprite(32, game.world.height - 150, 'character');
@@ -20,6 +23,11 @@ export function create(game) {
   return player;
 }
 
+/**
+ * @param {Phaser.Sprite} player
+ * @param {object} cursors
+ * @param {Phaser.Key} spaceKey
+ */
 export function update(player, cursors, spaceKey) {
   player.body.velocity.x = 0;
 

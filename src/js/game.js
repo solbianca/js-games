@@ -3,7 +3,7 @@
 import * as Boot from './modules/Boot';
 import * as Load from './modules/Load';
 import * as End from './modules/End';
-import * as LevelsFactory from './modules/LevelsFactory';
+import * as Levels from './modules/Levels';
 
 /**
  * @type {Phaser.Game}
@@ -14,6 +14,7 @@ Boot.setGlobal(game);
 
 game.state.add('boot', Boot.init(game));
 game.state.add('load', Load.init(game));
-LevelsFactory.create(game);
+game.state.add('levels', Levels.init(game));
 game.state.add('end', End.init(game));
+
 game.state.start('boot');

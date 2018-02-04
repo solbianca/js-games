@@ -1,11 +1,9 @@
 'use strict';
 
-import * as Config from './Config';
 import * as Platforms from './Platforms';
 import * as Player from './Player';
 import * as Bones from './Bones';
 import * as Timer from './Timer';
-import * as Music from './Music';
 import * as Collision from './Collision';
 
 let levels = require('../data/levels');
@@ -32,59 +30,64 @@ export function create(game) {
   }
 }
 
+/**
+ * @param {Phaser.Game} game
+ * @param {object} level
+ */
 function createLevel(game, level) {
-  let defaultLevelConfig = Config.defaultValues(game);
-  let platforms = Platforms.create(game, level.platforms);
+  game.add.sprite(0, 0, 'background');
+
+  let staticPlatforms = Platforms.createStatic(game, level.staticPlatforms);
+  let movablePlatforms = Platforms.createMovable(game, level.movablePlatforms);
+  let ground = Platforms.createGround(game);
   let player = Player.create(game);
   let bones = Bones.create(game, level.totalBones);
 
   Timer.create(game, 20, level);
 
-  let sounds = defaultLevelConfig.sounds;
-  let cursors = defaultLevelConfig.cursors;
-  let spaceKey = defaultLevelConfig.spaceKey;
-
   game.global.level = {
-    platforms: platforms,
+    staticPlatforms: staticPlatforms,
+    movablePlatforms: movablePlatforms,
+    ground: ground,
     player: player,
     bones: bones,
-    sounds: sounds,
-    cursors: cursors,
-    spaceKey: spaceKey,
   };
-
-  game.global.music = Music.createBackgroundMusic(game);
-  game.global.music.play();
 
   let score = 'Score: ' + game.global.score;
   let levelScore = 'Level score: 0';
-  game.global.scoreText = game.add.text(16, 16, score, { fontSize: '32px', fill: '#000' });
-  game.global.levelScoreText = game.add.text(16, 48, levelScore, { fontSize: '32px', fill: '#000' });
+  game.global.scoreText = game.add.text(16, 16, score,
+    {fontSize: '32px', fill: '#000'});
+  game.global.levelScoreText = game.add.text(16, 48, levelScore,
+    {fontSize: '32px', fill: '#000'});
 }
 
 function updateLevel(game, level) {
   Collision.update(game, level);
   Player.update(
     game.global.level.player,
-    game.global.level.cursors,
-    game.global.level.spaceKey,
+    game.global.cursors,
+    game.global.spaceKey,
   );
 }
 
 /**
- * @param value
- * @returns boolean
+ * @param {array} value
+ * @returns {boolean}
  */
 function isLevelsValid(value) {
   return (Array.isArray(value) && value.length > 0);
 }
 
+/**
+ * @param {object} level
+ * @return {boolean}
+ */
 function isLevelValid(level) {
   if (typeof level !== 'object') {
     return false;
   }
 
-  let properties = ['level', 'platforms', 'totalBones', 'nextLevel'];
+  let properties = ['level', 'staticPlatforms', 'movablePlatforms', 'totalBones', 'nextLevel'];
   for (let property of properties) {
     if (!level.hasOwnProperty(property)) {
       return false;

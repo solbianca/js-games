@@ -33,7 +33,8 @@ function preload(game) {
  * @param {Phaser.Game} game
  */
 function create(game) {
-  setTimeout(function () { game.state.start('01'); }, 500);
+  game.state.start('levels');
+  // setTimeout(function () { game.state.start('01'); }, 500);
 }
 
 /**
@@ -43,6 +44,7 @@ function loadDefaultAssets(game) {
   game.load.image('background', 'assets/images/paw_patrol_bg.png');
   game.load.image('platform', 'assets/images/platform.png');
   game.load.image('bone', 'assets/images/bone.png');
+  game.load.spritesheet('bone', 'assets/images/gameboy_seize_color_40x60.png', 40, 60);
 
   //sprites
   // game.load.spritesheet('character', 'assets/images/rubble.png', 80.5, 71);

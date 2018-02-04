@@ -1,40 +1,43 @@
 [
   {
     "level": "01",
-    "platforms":[
+    "staticPlatforms":[
       {"x":400,"y":400},
       {"x":-150,"y":250}
     ],
+    "movablePlatforms":[],
     "totalBones": 16,
     "nextLevel": "02"
   },
   {
     "level": "02",
-    "platforms":[
+    "staticPlatforms":[
       {"x":303,"y":130,"scale": [0.5,1]},
       {"x":440,"y":400,"scale": [0.89,1]},
       {"x":-150,"y":270}
     ],
+    "movablePlatforms":[],
     "totalBones": 16,
     "nextLevel": "03"
   },
   {
     "level": "03",
-    "platforms":[
+    "staticPlatforms":[
       {"x":850,"y":450},
       {"x":335,"y":310},
       {"x":-150,"y":250}
     ],
+    "movablePlatforms":[],
     "totalBones": 16,
     "nextLevel": "04"
   },
   {
     "level": "04",
-    "platforms":[
+    "staticPlatforms":[
       {"x":335,"y":310},
-      {"x":-150,"y":250}
+      {"x":-150,"y":200}
     ],
-    "platformsMovable":[
+    "movablePlatforms":[
       {"x":850,"y":450}
     ],
     "totalBones": 16,

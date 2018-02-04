@@ -1,5 +1,8 @@
 'use strict';
 
+/**
+ * @param {Phaser.Game} game
+ */
 export function createBackgroundMusic(game) {
   let music = game.add.audio('bgSound');
   music.loop = true;

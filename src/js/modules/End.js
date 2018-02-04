@@ -55,7 +55,6 @@ function create(game) {
     .loop()
     .start();
   game.time.events.add(1000, txtBlink);
-  console.log(game.global.collectedBones);
 }
 
 /**
@@ -67,6 +66,6 @@ function update(game) {
     game.global.timeLevel = 0;
     game.global.score = 0;
     game.global.collectedBones = 0;
-    game.state.start('01'); //for now, later wil go to menu
+    game.state.start('levels'); //for now, later wil go to menu
   }
 }
