@@ -72,8 +72,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
  */
 var game = new Phaser.Game(1067, 600, Phaser.AUTO, 'gameDiv');
 
-Boot.setGlobal(game);
-
 game.state.add('boot', Boot.init(game));
 game.state.add('load', Load.init(game));
 game.state.add('levels', Levels.init(game));
@@ -149,7 +147,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.init = init;
-exports.setGlobal = setGlobal;
 function init(game) {
   return {
     preload: function preload(game) {
@@ -174,13 +171,6 @@ function _preload(game) {
  */
 function _create(game) {
   game.state.start('load');
-}
-
-/**
- * @param {Phaser.Game} game
- */
-function setGlobal(game) {
-  game.global = { music: {}, timeLevel: 0, score: 0, collectedBones: 0 };
 }
 
 },{}],5:[function(require,module,exports){
@@ -355,6 +345,8 @@ function init(game) {
  * @param {Phaser.Game} game
  */
 function _preload(game) {
+  game.global = { music: {}, timeLevel: 0, score: 0, collectedBones: 0 };
+
   game.global.music = Music.createBackgroundMusic(game);
   game.global.music.play();
 
@@ -372,7 +364,7 @@ function _preload(game) {
  */
 function _create(game) {
   setTimeout(function () {
-    game.state.start('04');
+    game.state.start('01');
   }, 500);
 }
 

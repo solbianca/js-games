@@ -21,6 +21,8 @@ export function init(game) {
  * @param {Phaser.Game} game
  */
 function preload(game) {
+  game.global = {music: {}, timeLevel: 0, score: 0, collectedBones: 0};
+
   game.global.music = Music.createBackgroundMusic(game);
   game.global.music.play();
 

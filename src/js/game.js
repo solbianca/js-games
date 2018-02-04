@@ -10,8 +10,6 @@ import * as Levels from './modules/Levels';
  */
 let game = new Phaser.Game(1067, 600, Phaser.AUTO, 'gameDiv');
 
-Boot.setGlobal(game);
-
 game.state.add('boot', Boot.init(game));
 game.state.add('load', Load.init(game));
 game.state.add('levels', Levels.init(game));

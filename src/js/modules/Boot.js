@@ -28,10 +28,3 @@ function preload(game) {
 function create(game) {
   game.state.start('load');
 }
-
-/**
- * @param {Phaser.Game} game
- */
-export function setGlobal(game) {
-  game.global = {music: {}, timeLevel: 0, score: 0, collectedBones: 0};
-}

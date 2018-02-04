@@ -66,7 +66,7 @@ function updateLevel(game, level) {
   Player.update(
     game.global.level.player,
     game.global.cursors,
-    game.global.spaceKey,
+    game.global.spaceKey
   );
 }
 
